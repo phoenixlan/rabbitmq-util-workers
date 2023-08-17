@@ -1,13 +1,13 @@
 FROM python:3.8-alpine
 
-RUN mkdir -p /srv/phoenixMailService && addgroup -S phoenixMailService && adduser -S phoenixMailService -G phoenixMailService; \
-chown phoenixMailService:phoenixMailService /srv/phoenixMailService;
+RUN mkdir -p /srv/rabbitmqMailWorker && addgroup -S rabbitmqMailWorker && adduser -S rabbitmqMailWorker -G rabbitmqMailWorker; \
+chown rabbitmqMailWorker:rabbitmqMailWorker /srv/rabbitmqMailWorker;
 
-WORKDIR /srv/phoenixMailService
-COPY . /srv/phoenixMailService
+WORKDIR /srv/rabbitmqMailWorker
+COPY . /srv/rabbitmqMailWorker
 
 RUN pip install -e .
 
-USER phoenixMailService
+USER rabbitmqMailWorker
 
-CMD ["python", "-m", "phoenixMailService"]
+CMD ["python", "-m", "rabbitmqMailWorker"]

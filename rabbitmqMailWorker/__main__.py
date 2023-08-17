@@ -4,8 +4,10 @@ import requests
 import json
 
 import logging
-logging.basicConfig(level=logging.NOTSET)
+logging.basicConfig(level=logging.INFO)
+
 log = logging.getLogger(__name__)
+log.setLevel(logging.DEBUG)
 
 
 MAILGUN_DOMAIN = os.environ["MAILGUN_DOMAIN"]

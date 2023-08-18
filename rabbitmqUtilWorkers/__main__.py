@@ -1,0 +1,1 @@
+print("Specify a target worker, like for example \"mailWorker\"")

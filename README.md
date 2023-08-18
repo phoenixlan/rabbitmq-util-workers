@@ -1,6 +1,10 @@
-# PhoenixMailService
+# Rabbitmq util workers
 
-Mail service for use with rabbitmq. Listens to a specific topic and sends e-mails.
+A collection of utility workers that are useful when you don't want to do common stuff in your webserver thread.
+
+## Features
+
+ * Mail service for use with rabbitmq. Listens to a specific topic and sends e-mails.
 
 ## Configuration
 

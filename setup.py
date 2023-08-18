@@ -10,6 +10,6 @@ requires = [
     'pika'
 ]
 
-setup(name='phoenixMailService',
+setup(name='rabbitmqUtilWorkers',
     install_requires=requires,
 )

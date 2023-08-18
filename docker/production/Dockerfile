@@ -1,13 +1,13 @@
 FROM python:3.8-alpine
 
-RUN mkdir -p /srv/rabbitmqMailWorker && addgroup -S rabbitmqMailWorker && adduser -S rabbitmqMailWorker -G rabbitmqMailWorker; \
-chown rabbitmqMailWorker:rabbitmqMailWorker /srv/rabbitmqMailWorker;
+RUN mkdir -p /srv/rabbitmqUtilWorkers && addgroup -S rabbitmqUtilWorkers && adduser -S rabbitmqUtilWorkers -G rabbitmqUtilWorkers; \
+chown rabbitmqUtilWorkers:rabbitmqUtilWorkers /srv/rabbitmqUtilWorkers;
 
-WORKDIR /srv/rabbitmqMailWorker
-COPY . /srv/rabbitmqMailWorker
+WORKDIR /srv/rabbitmqUtilWorkers
+COPY . /srv/rabbitmqUtilWorkers
 
 RUN pip install -e .
 
-USER rabbitmqMailWorker
+USER rabbitmqUtilWorkers
 
-CMD ["python", "-m", "rabbitmqMailWorker"]
+CMD ["python", "-m", "rabbitmqUtilWorkers.mailWorker"]

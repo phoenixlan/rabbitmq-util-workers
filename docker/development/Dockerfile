@@ -1,14 +1,14 @@
 FROM python:3.8
 
-RUN mkdir -p /srv/rabbitmqMailWorker && groupadd -r rabbitmqMailWorker && useradd -r -g rabbitmqMailWorker rabbitmqMailWorker; \
-chown rabbitmqMailWorker:rabbitmqMailWorker /srv/rabbitmqMailWorker
+RUN mkdir -p /srv/rabbitmqUtilWorkers && groupadd -r rabbitmqUtilWorkers && useradd -r -g rabbitmqUtilWorkers rabbitmqUtilWorkers; \
+chown rabbitmqUtilWorkers:rabbitmqUtilWorkers /srv/rabbitmqUtilWorkers
 
 # TODO this is dumb, should probably not be a common thing. We badly want separate prod and development images
-WORKDIR /srv/rabbitmqMailWorker
-COPY . /srv/rabbitmqMailWorker
+WORKDIR /srv/rabbitmqUtilWorkers
+COPY . /srv/rabbitmqUtilWorkers
 
-RUN ls -l; rm -r docker && pip install -e .; rm -r rabbitmqMailWorker;
+RUN ls -l; rm -r docker && pip install -e .; rm -r rabbitmqUtilWorkers;
 
-USER rabbitmqMailWorker
+USER rabbitmqUtilWorkers
 
-CMD ["python", "-m", "rabbitmqMailWorker"]
+CMD ["python", "-m", "rabbitmqUtilWorkers.mailWorker"]
